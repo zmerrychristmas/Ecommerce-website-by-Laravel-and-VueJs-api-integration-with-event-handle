@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Auth;
+use App\Jobs\ProcessFlashSaleOrder;
+use Illuminate\Support\Facades\Redis;
 
 class OrderController extends Controller
 {
@@ -31,9 +33,30 @@ class OrderController extends Controller
             'product_id' => $request->product_id,
             'user_id' => Auth::id(),
             'quantity' => $request->quantity,
-            'address' => $request->address
+            'address' => $request->address,
+            'status' => Order::ORDER_CREATED
         ]);
+        for($i = 0; $i < 200; $i ++) {
+            ProcessFlashSaleOrder::dispatch($order, $i)->onConnection('redis')->onQueue('flashsale');
+        }
+        return response()->json([
+            'status' => (bool) $order,
+            'data'   => $order,
+            'message' => $order ? 'Order Created!' : 'Error Creating Order',
+            'order' => Redis::llen('queues:' . 'flashsale')
+        ]);
+    }
 
+    public function flashsaleStore(Request $request)
+    {
+        $order = Order::create([
+            'product_id' => $request->product_id,
+            'user_id' => Auth::id(),
+            'quantity' => $request->quantity,
+            'address' => $request->address,
+            'status' => Order::ORDER_PROCESSING
+        ]);
+        ProcessFlashSaleOrder::dispatch($order)->onConnection('redis')->onQueue('flashsale');
         return response()->json([
             'status' => (bool) $order,
             'data'   => $order,

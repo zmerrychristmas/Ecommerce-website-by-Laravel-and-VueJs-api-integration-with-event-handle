@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedInteger('quantity')->default(1);
             $table->string('address')->nullable();
             $table->boolean('is_delivered')->default(false);
+            $table->tinyInteger('status')->default(0);
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

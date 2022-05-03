@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Jobs\ProcessFlashSaleOrder;
 use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Log;
 
 
 class ProductController extends Controller
 {
     public function index()
     {
+        // Redis::keys('*');
+
+        // // Count by name
+        // $queueName = 'flashsale';
+        // echo Redis::llen('queues:' . $queueName) . '<br/ >';
+
+        // // To count by status:
+        // echo Redis::zcount('queues:' . $queueName . ':delayed', '-inf', '+inf'). '<br/ >';
+        // echo Redis::zcount('queues:' . $queueName . ':reserved', '-inf', '+inf'). '<br/ >';
+        // die;
         return response()->json(Product::all(),200);
     }
 

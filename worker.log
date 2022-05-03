@@ -1,0 +1,722 @@
+
+   RedisException 
+
+  Connection lost
+
+   RedisException 
+
+  Connection lost
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+   RedisException 
+
+  Connection lost
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+   RedisException 
+
+  Connection lost
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+   RedisException 
+
+  Connection lost
+
+   RedisException 
+
+  Connection lost
+
+  Connection lost
+
+   RedisException 
+
+  Connection lost
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connections/Connection.php:116
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+    112▕     public function command($method, array $parameters = [])
+    113▕     {
+    114▕         $start = microtime(true);
+    115▕ 
+  ➜ 116▕         $result = $this->client->{$method}(...$parameters);
+    117▕ 
+    118▕         $time = round((microtime(true) - $start) * 1000, 2);
+    119▕ 
+    120▕         if (isset($this->events)) {
+
+      [2m+24 vendor frames [22m
+  25  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+
+   RedisException 
+
+  php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+  at vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php:155
+    151▕         if (version_compare(phpversion('redis'), '5.3.0', '>=') && ! is_null($context = Arr::get($config, 'context'))) {
+    152▕             $parameters[] = $context;
+    153▕         }
+    154▕ 
+  ➜ 155▕         $client->{($persistent ? 'pconnect' : 'connect')}(...$parameters);
+    156▕     }
+    157▕ 
+    158▕     /**
+    159▕      * Create a new redis cluster instance.
+
+      [2m+28 vendor frames [22m
+  29  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))

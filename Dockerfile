@@ -23,12 +23,14 @@ RUN apt-get update && apt-get install -y \
     curl \
     build-essential \
     openssl \
-    libssl-dev curl
+    libssl-dev curl \
+    supervisor \
+    software-properties-common 
  
 RUN groupadd dev
 # node install
 
-ENV NODE_VERSION=15.0.0
+ENV NODE_VERSION=15.14.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/usr/local/nvm/.nvm
 RUN mkdir /usr/local/nvm
@@ -48,31 +50,42 @@ RUN node --version
 RUN npm --version
 
 
-
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
  
 # Install extensions for php
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
+RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
+RUN pecl install redis \
+    && docker-php-ext-enable redis
  
 # Install composer (php package manager)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
  
 # Copy existing application directory contents to the working directory
 COPY . /var/www/html
- 
+
+ENV ENABLE_CRONTAB 1
+ENV ENABLE_HORIZON 1
+ENTRYPOINT ["sh", "/var/www/html/docker-entrypoint.sh"]
+
+COPY ./supervisor.d/*.* /etc/supervisor/conf.d/
+
 RUN composer install
 RUN composer dump-autoload
 RUN chmod 777 install.sh
-CMD ["./install.sh"]
+
+RUN ["/bin/bash", "-c", "./install.sh"]
 
 # Assign permissions of the working directory to the www-data user
 RUN chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 RUN chmod -R 777 /var/www/html/storage
-# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
-CMD ["php-fpm"]
+
+CMD supervisord -n -c /etc/supervisor/supervisord.conf
+
+# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
+# CMD ["php-fpm"]

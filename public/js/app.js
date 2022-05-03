@@ -5429,6 +5429,7 @@ var render = function () {
                 { staticClass: "col-md-4 product-box", on: { key: index } },
                 [
                   _c("img", {
+                    staticClass: "product-image",
                     attrs: {
                       src: order.product.image,
                       alt: order.product.name,
