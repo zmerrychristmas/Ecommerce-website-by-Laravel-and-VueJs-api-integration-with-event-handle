@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/products', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::view('/{any}', 'product')->where('any', '.*');
+Route::get('/{any}', function(){
+    return view('landing');
+})->where('any', '.*');

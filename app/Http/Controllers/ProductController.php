@@ -4,108 +4,114 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\File; 
+
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $products  = Product::all();
-
-        return response()->json($products);
+        return response()->json(Product::all(),200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function flashsale()
     {
-        //
+        $products = Product::where('is_flashsale', true)->get();
+
+        return response()->json($products->toArray(), 200);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @$request
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
-
-        return response()->json($product);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $product = Product::find($id);
-
-        if (!$product) {
-            return response()->json(['message' => 'Product not found']);
+        if($request->image == null) {
+            $request->image = asset("images/default-product-image.png");
         }
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'units' => $request->units,
+            'price' => $request->price,
+            'is_flashsale' => $request->is_flashsale,
+            'image' => $request->image
+        ]);
 
-        return response()->json($product);
+        return response()->json([
+            'status' => (bool) $product,
+            'data'   => $product,
+            'message' => $product ? 'Product Created!' : 'Error Creating Product'
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show(Product $product)
     {
-        //
+        return response()->json($product,200); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function uploadFile(Request $request)
     {
-        $product = Product::find($id);
+        if($request->hasFile('image')){
+            $name = time()."_".$request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('images'), $name);
 
-        if (!$product) {
-            return response()->json(['message' => 'Product not found']);
+            return response()->json(asset("images/$name"),201);
+        } else {
+            return response()->json(asset("images/default-product-image.png"),201);
+        } 
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        if($request->get('image') != '') {            
+            $image_names = explode('/', $product->image);
+            if (end($image_names) != 'default-product-image.png') {
+                $path = public_path('images') . '/' . end($image_names);
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
         }
+        $status = $product->update(
+            $request->only(['name', 'description', 'units', 'price', 'is_flashsale','image'])
+        );
 
-        $product->update($request->all());
-
-        return response()->json($product);
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Product Updated!' : 'Error Updating Product'
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function updateUnits(Request $request, Product $product)
     {
-        $product = Product::find($id);
+        $product->units = $product->units + $request->get('units');
+        $status = $product->save();
 
-        if (!$product) {
-            return response()->json(['message' => 'Product not found']);
-        }
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Units Added!' : 'Error Adding Product Units'
+        ]);
+    }
 
-        $product->delete();
+    public function updateFlashsale(Request $request, Product $product)
+    {
+        $product->is_flashsale = $request->get('is_flashsale');
+        $status = $product->save();
 
-        return response()->json('delete success');
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Flashsale!' : 'Error change flashsle product'
+        ]);
+    }
+
+    public function destroy(Product $product)
+    {
+        $status = $product->delete();
+
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Product Deleted!' : 'Error Deleting Product'
+        ]);
     }
 }

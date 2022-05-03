@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->unsignedInteger('units')->default(0);
+            $table->boolean('is_flashsale')->default(false);
             $table->double('price');
             $table->string('image');
             $table->timestamps();
