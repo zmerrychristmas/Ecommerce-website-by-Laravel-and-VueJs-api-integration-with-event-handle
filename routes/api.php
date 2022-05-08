@@ -36,4 +36,5 @@ use App\Http\Controllers\OrderController;
         Route::patch('orders/{order}/deliver','App\Http\Controllers\OrderController@deliverOrder');
         Route::resource('/orders', 'App\Http\Controllers\OrderController');
         Route::resource('/products', 'App\Http\Controllers\ProductController')->except(['index','show']);
+        Route::post('/orders/flashsale', 'App\Http\Controllers\OrderController@flashsaleStore');
     });

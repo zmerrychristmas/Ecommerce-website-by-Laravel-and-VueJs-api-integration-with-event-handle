@@ -83,6 +83,7 @@ RUN chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 RUN chmod -R 777 /var/www/html/storage
+
 EXPOSE 9000
 
 CMD supervisord -n -c /etc/supervisor/supervisord.conf

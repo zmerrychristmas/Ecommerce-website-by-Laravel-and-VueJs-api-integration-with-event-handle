@@ -60,7 +60,8 @@ class OrderController extends Controller
         return response()->json([
             'status' => (bool) $order,
             'data'   => $order,
-            'message' => $order ? 'Order Created!' : 'Error Creating Order'
+            'message' => $order ? 'Order Created!' : 'Error Creating Order',
+            'order' => Redis::llen('queues:' . 'flashsale')
         ]);
     }
 

@@ -9,6 +9,8 @@ use App\Jobs\ProcessFlashSaleOrder;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use App\Events\OrderShipmentStatusUpdated;
 
 
 class ProductController extends Controller
@@ -25,13 +27,20 @@ class ProductController extends Controller
         // echo Redis::zcount('queues:' . $queueName . ':delayed', '-inf', '+inf'). '<br/ >';
         // echo Redis::zcount('queues:' . $queueName . ':reserved', '-inf', '+inf'). '<br/ >';
         // die;
+        // $order = Order::find(54);
+        // OrderShipmentStatusUpdated::dispatch($order);
+        // broadcast(new OrderShipmentStatusUpdated($order))->toOthers();
         return response()->json(Product::all(),200);
     }
 
     public function flashsale()
     {
-        $products = Product::where('is_flashsale', true)->get();
-
+        $userids = DB::table('users')
+        ->join('orders', 'users.id', '=', 'orders.user_id')
+        ->pluck('orders.product_id')->toArray();
+        $products = Product::whereNotIn('id', $userids)
+                                                ->where('is_flashsale', true)
+                                                ->get();
         return response()->json($products->toArray(), 200);
     }
 

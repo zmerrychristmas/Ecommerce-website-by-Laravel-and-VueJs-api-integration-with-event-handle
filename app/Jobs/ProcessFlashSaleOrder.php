@@ -10,8 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Order;
-use Log;
-use DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use App\Events\OrderShipmentStatusUpdated;
 
 class ProcessFlashSaleOrder implements ShouldQueue, ShouldBeUnique
 {
@@ -55,25 +56,28 @@ class ProcessFlashSaleOrder implements ShouldQueue, ShouldBeUnique
      */
     public function handle()
     {
-        // DB::beginTransaction();
-        // try {
-        //     $product = $this->order->product;
-        //     if ($product->units - $this->order->quantity >= 0) {
-        //         DB::table('products')->update(['units' => $product->units - 1])
-        //             ->where('id', $product->id);
-        //         DB::table('orders')->update(['status' => Order::ORDER_ACCEPTED])
-        //             ->where('id', $this->order->id);
-        //     } else {
-        //         DB::table('orders')->update(['status' => Order::ORDER_CANCELED])
-        //             ->where('id', $this->order->id);
-        //     }
-        //     DB::commit();
-        // } catch (Exception $e) {
-        //     DB::rollBack();
-        //     throw new Exception($e->getMessage());
-        // }
+        $message = '';
+        DB::beginTransaction();
+        try {
+            $product = $this->order->product;
+            if ($product->units - $this->order->quantity >= 0) {
+                DB::table('products')->where('id', $product->id)->update(['units' => $product->units - 1]);
+                DB::table('orders')->where('id', $this->order->id)->update(['status' => Order::ORDER_ACCEPTED]);
+                $message = 'ORDER_ACCEPTED';
+            } else {
+                DB::table('orders')->where('id', $this->order->id)->update(['status' => Order::ORDER_CANCELED]);
+                $message = 'ORDER_CANCELED';                    
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            $message = 'ORDER_ERROR';                    
+            throw new Exception($e->getMessage());
+        }
         Log::info('Order is processed ' . $this->order->id);
-        usleep(1 * 1000 * 1000);
-        Log::info('Order is processed completed ' . $this->order->id);
+        //usleep(1 * 1000 * 1000);
+        $this->order = Order::find($this->order->id);
+        OrderShipmentStatusUpdated::dispatch($this->order, $message);
+        Log::info('Order is processed completed ' . $this->order  . ' status: ' . $this->order->status);
     }
 }

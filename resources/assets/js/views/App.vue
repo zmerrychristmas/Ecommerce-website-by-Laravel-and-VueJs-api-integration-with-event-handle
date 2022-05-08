@@ -2,7 +2,7 @@
         <div>
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
-                    <router-link :to="{name: 'home'}" class="navbar-brand">Big Store</router-link>
+                    <router-link :to="{name: 'home'}" class="navbar-brand">Laravel Ecommerce</router-link>
                     <router-link :to="{name: 'flashsale'}" class="navbar-link" v-if="user_type==0">Flash Sale</router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

@@ -25,7 +25,12 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.1.1",
+        "@fortawesome/free-solid-svg-icons": "^6.1.1",
+        "@fortawesome/vue-fontawesome": "^2.0.6",
+        "laravel-echo": "^1.11.7",
         "popper.js": "^1.16.1",
+        "pusher-js": "^7.1.0-beta",
         "vue-router": "^3.5.3",
         "vuex": "^3.6.2"
     }

@@ -11,4 +11,3 @@ npm install
 npm run prod
 chmod -R 777 storage
 chmod -R 777 public/images
-php artisan passport:install
